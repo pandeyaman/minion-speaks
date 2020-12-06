@@ -3,7 +3,6 @@ var btnTransalate = document.querySelector('#btn-translate');
 var outputText = document.querySelector('#output-text');
 var sampleText = document.querySelector("#sample-text");
 var resettext = document.querySelector("#reset-text");
-
 var funFactSpan = document.querySelector('#fact-span');
 
 var facts = [
@@ -39,22 +38,24 @@ function randomAudio() {
     return currentAudio;
 }
 
+function errorHandler() {
+    alert("This API is rate-limited and can be called only 5 times per hour. Please try again after an hour.");
+}
 
 btnTransalate.addEventListener('click', () => {
     var englishText = inputText.value;
-    var URL = 'https://api.funtranslations.com/translate/mandalorian.json?text=' + englishText;
+    var URL = 'https://api.funtranslations.com/translate/minion.json?text=' + englishText;
+
     fetch(URL)
         .then(response => response.json())
         .then(json => outputText.innerText = json.contents.translated)
-        .catch(() => {
-            alert("This API is rate-limited and can be called only 5 times per hour. Please try again after an hour.");
-        })
-
-    var funFact = randomFact();
-    funFactSpan.textContent = funFact;
+        .catch(errorHandler);
 
     var audioPlay = randomAudio();
     audioPlay.play();
+
+    var funFact = randomFact();
+    funFactSpan.textContent = funFact;
 });
 
 sampleText.addEventListener('click', () => {
