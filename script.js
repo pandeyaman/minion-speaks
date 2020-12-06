@@ -19,10 +19,24 @@ var facts = [
     "Purple and yellow are on opposite sides in color spectrum; hence the evil minions were made purple.",
 ];
 
-function randomFact(){
-    var index = Math.floor(Math.random()*10);
+funFactSpan.textContent = "Translate something and we will tell you an intersting fact about Minions.";
+
+const banana = new Audio('./audios/minion-bababa.mp3');
+const bello = new Audio('./audios/minion-bello.mp3');
+const laugh = new Audio('./audios/minion-laugh.mp3');
+
+var audioArray = [banana, bello, laugh];
+
+function randomFact() {
+    var index = Math.floor(Math.random() * 10);
     var fact = facts[index];
     return fact;
+}
+
+function randomAudio() {
+    var index = Math.floor(Math.random() * audioArray.length);
+    var currentAudio = audioArray[index];
+    return currentAudio;
 }
 
 
@@ -37,7 +51,10 @@ btnTransalate.addEventListener('click', () => {
         })
 
     var funFact = randomFact();
-    funFactSpan.textContent =funFact;
+    funFactSpan.textContent = funFact;
+
+    var audioPlay = randomAudio();
+    audioPlay.play();
 });
 
 sampleText.addEventListener('click', () => {
@@ -48,4 +65,5 @@ sampleText.addEventListener('click', () => {
 resettext.addEventListener('click', () => {
     inputText.value = " ";
     outputText.innerText = " ";
+    funFactSpan.textContent = "Translate something and we will tell you an intersting fact about Minions.";
 });

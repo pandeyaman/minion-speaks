@@ -135,16 +135,25 @@ textarea {
     width: auto;
 }
 
+.display-inline{
+    display: inline;
+    border: 1px solid red;
+}
+
 .fun-fact-head {
     color: black;
 }
 
 .span-fact {
     padding: 7px;
-    height: 10vh;
-    width: 600px;
+    height: 20vh;
+    width: 700px;
     box-shadow: 1px 1px 8px 1px #b49a04;
-    font-size: 18px;
+    font-size: 16px;
+}
+
+.img-minion{
+    width: 250px;
 }
 
 .footer {
@@ -153,10 +162,11 @@ textarea {
     background-color: #0A75BC;
     padding: 20px 0px;
     height: 55px;
+    box-shadow: inset 1px 0px 10px black;
 }
 
 .footer-text{
-    color: white;
+    color: #FDE040;
     font-size: 1.2rem;
 }
 
